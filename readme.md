@@ -159,9 +159,9 @@ This project is a conceptual demonstration and has several simplifications:
 -   **Prioritization Model**: The model is trained on a small, static CSV file. A real-world MLOps pipeline would continuously retrain this model on live data from CI/CD runs and code repository metrics.
 -   **Test Name Mapping**: The mapping between historical test names and pytest's internal node names in `conftest.py` is a known challenge. This PoC uses a simple substring match, but a robust solution might involve custom pytest markers.
 
-## Citing this Work
+<!-- ## Citing this Work
 
-If you use this framework or concepts from this repository in your research, please cite our paper:
+  If you use this framework or concepts from this repository in your research, please cite our paper:
 
 ```bibtex
 @article{zhao2024augmenting,
@@ -172,7 +172,7 @@ If you use this framework or concepts from this repository in your research, ple
   publisher={Example Publisher}
 }
 ```
-
+ -->
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
