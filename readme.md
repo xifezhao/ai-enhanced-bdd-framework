@@ -20,6 +20,11 @@ This framework implements several key concepts from the paper:
 6.  **CI/CD Integration**: A sample GitHub Actions workflow (`.github/workflows/ci.yml`) is provided to demonstrate how to automate the entire AI-enhanced testing pipeline.
 
 ---
+## Framework Workflow
+
+The following diagram illustrates the end-to-end operational mechanism of the AI-Enhanced BDD Framework:
+
+![Framework Workflow](./framework_workflow.svg)
 
 ## Installation & Setup
 
