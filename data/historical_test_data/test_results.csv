@@ -1,0 +1,8 @@
+test_name,last_run_status,related_code_churn,failures_last_10_runs
+test_successful_login,pass,5,0
+test_failed_login_with_wrong_password,pass,5,1
+test_failed_login_with_invalid_user,pass,5,0
+test_add_item_to_cart,fail,25,4
+test_view_empty_cart,pass,2,0
+test_add_multiple_items_to_cart,pass,25,2
+test_performance_of_product_page,fail,40,6

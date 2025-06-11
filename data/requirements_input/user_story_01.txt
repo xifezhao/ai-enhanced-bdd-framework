@@ -1,0 +1,1 @@
+As a registered user, I want to add a new laptop product to the shopping cart so that I can purchase it later.

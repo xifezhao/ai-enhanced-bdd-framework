@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+     <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 50px auto; display: flex; }
+        .products, .cart { flex: 1; padding: 20px; border: 1px solid #ccc; }
+        .products { margin-right: 20px; }
+    </style>
+</head>
+<body>
+    <div class="products">
+        <h1>Products</h1>
+        <ul>
+            {% for id, product in products.items() %}
+                <li>{{ product.name }} - ${{ product.price }} <button onclick="addToCart('{{ id }}')">Add to Cart</button></li>
+            {% endfor %}
+        </ul>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items">
+            <!-- Cart items will be populated by JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        function addToCart(productId) {
+            fetch('/api/add_to_cart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product_id: productId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateCart(data.cart);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            });
+        }
+
+        function updateCart(cartData) {
+            const cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            const products = {{ products | tojson }};
+            for (const [productId, quantity] of Object.entries(cartData)) {
+                const li = document.createElement('li');
+                li.textContent = `${products[productId].name} x ${quantity}`;
+                cartList.appendChild(li);
+            }
+        }
+        
+        // Initial cart load
+        document.addEventListener('DOMContentLoaded', () => {
+             updateCart({{ cart | tojson }});
+        });
+    </script>
+</body>
+</html>
